@@ -1,10 +1,9 @@
-name: log-utils
+name: gm-log-page
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/deploy.yml
+    push:
+        branches: ['main']
+    pull_request:
+        branches: ['main']
 jobs:
   auto-deploy:
     runs-on: ubuntu-latest
@@ -14,6 +13,7 @@ jobs:
 
       - name: Install and Build # 安装依赖、打包，如果提前已打包好无需这一步
         run: |
+          cd ./examples/react-project
           npm install
           npm run build:react
 
