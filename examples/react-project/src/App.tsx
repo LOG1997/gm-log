@@ -1,17 +1,16 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import "./App.css";
-import { SM2 } from '../../../packages/gm/index'
+import { SM2 } from 'gmlog'
 
 interface KeyPair {
     privateKey: bigint | undefined
     publicKey: { x: undefined | bigint, y: undefined | bigint }
 }
 function App() {
+    // 初始化
     const [isShowAlert, setIsShowAlert] = useState(false)
     const [isShowSuccess, setIsShowSuccess] = useState(false)
     const [isShowError, setIsShowError] = useState(false)
@@ -46,27 +45,13 @@ function App() {
         publicKey: { x: 0n, y: 0n },
         privateKey: 0n,
     });
-    const generateKeyA = () => {
-        setIsShowError(false)
-        setIsShowSuccess(false)
-        setSmAKey(sm.genKeyPaire())
-    }
-    const generateKeyB = () => {
 
-        setIsShowError(false)
-        setIsShowSuccess(false)
-        setSmBKey(sm.genKeyPaire())
-    }
     // a的临时密钥
     const [rKeyA, setRKeyA] = useState<KeyPair>({
         publicKey: { x: undefined, y: undefined },
         privateKey: undefined,
     });
-    const generateKeyTmpA = () => {
-        setIsShowSuccess(false)
-        setIsShowError(false)
-        setRKeyA(sm.agreement_initiate())
-    }
+
     // const rKeyA = sm.agreement_initiate();
     // console.log('😀rKeyA:', rKeyA);
     // b的临时密钥
@@ -80,14 +65,7 @@ function App() {
         setIsShowError(false)
         setRKeyB(sm.agreement_initiate())
     }
-    const generateAllkey = () => {
-        console.log('IDA:', IDA)
-        console.log('IDB:', IDB)
-        generateKeyA();
-        generateKeyB();
-        generateKeyTmpA();
-        generateKeyTmpB()
-    }
+
     // const [RB, setRB] = useState<any[]>([undefined])
     const [KB, setKB] = useState<string>('')
     const [KA, setKA] = useState<string>('')
@@ -162,7 +140,28 @@ function App() {
     }
 
     // console.log('😎...curveParam:', ...curveParam)
+    const generateKeyA = () => {
+        setIsShowError(false)
+        setIsShowSuccess(false)
+        setSmAKey(sm.genKeyPaire())
+    }
+    const generateKeyB = () => {
 
+        setIsShowError(false)
+        setIsShowSuccess(false)
+        setSmBKey(sm.genKeyPaire())
+    }
+    const generateKeyTmpA = () => {
+        setIsShowSuccess(false)
+        setIsShowError(false)
+        setRKeyA(sm.agreement_initiate())
+    }
+    const generateAllkey = () => {
+        generateKeyA();
+        generateKeyB();
+        generateKeyTmpA();
+        generateKeyTmpB()
+    }
 
 
 

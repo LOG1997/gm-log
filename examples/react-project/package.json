@@ -14,6 +14,7 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.10",
+    "gmlog": "^0.0.5",
     "log1997-utils": "^0.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
