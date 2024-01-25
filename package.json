@@ -1,6 +1,6 @@
 {
     "name": "gmlog",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "国密算法密钥交换算法js实现",
     "main": "lib/index.mjs",
     "types": "lib/index.d.ts",
