@@ -157,11 +157,20 @@ class ECC {
         this.a_3 = pyMod(a + 3n, p);
     }
     genKeyPaire() {
-        const rng = new SecureRandom();
-        const nBig = new BigInteger(this.n.toString(16));
-        const initLen = this.n.toString(16).length * 4;
-        const randomNum = new BigInteger(initLen, rng);
-        const randomBigNum = randomNum.mod(nBig.subtract(BigInteger.ONE)).add(BigInteger.ONE)
+        // 生成一个随机的十六进制字符串
+        let random_16_str=''
+        for  (let i = 0; i < 64; i++) {
+            random_16_str += Math.floor(Math.random() * 16).toString(16);
+        }
+        const randomBigNum=  BigInt('0x'+random_16_str)
+        // const rng = new SecureRandom();
+        // console.log('genKeyPaire:',rng)
+        // const nBig = new BigInteger(this.n.toString(16));
+        // const initLen = this.n.toString(16).length * 4;
+        // const randomNum = new BigInteger(initLen, rng);
+        // console.log('random',randomNum);
+        // const randomBigNum = randomNum.mod(nBig.subtract(BigInteger.ONE)).add(BigInteger.ONE)
+        // console.log('random uni',randomBigNum.toString(16));
         const d = BigInt(randomBigNum.toString());
         // const d = 0x6fcba2ef9ae0ab902bc3bde3ff915d44ba4cc78f88e2f8e7f8996d3b8cceedeen;
 
@@ -435,11 +444,14 @@ class SM2 extends ECC {
     agreement_response(RA: { x: bigint, y: bigint }, PA: { x: bigint, y: bigint }, IDA = '', option = false, rB: null | bigint = null, RB: { x: bigint, y: bigint } | null = null, kLen: number | null = null) {
         //TODO： type RA PA rB RB。为字符串将其转化为BigInt
         // TODO:判断点是否在椭圆曲线上
-
         // eslint-disable-next-line no-unused-vars
         const x1 = BigInt(RA.x);
         const y1 = BigInt(RA.y);
         if (!this.onCurve([x1, y1])) {
+            console.log('不在曲线上',x1,y1);
+            const x1_16=x1.toString(16);
+            const y1_16=y1.toString(16);
+            console.log('十六进制',x1_16,y1_16);
             throw new Error('不在曲线上');
         }
         const w = 127n;

@@ -63,7 +63,15 @@ function App() {
     const generateKeyTmpB = () => {
         setIsShowSuccess(false)
         setIsShowError(false)
-        setRKeyB(sm.agreement_initiate())
+        const smb_lin=sm.agreement_initiate()
+        // const smb_lin = {
+        //     privateKey: 0x33FE21940342161C55619C4A0C060293D543C80AF19748CE176D83477DE71C80n,
+        //     publicKey: {
+        //         x: 0x1799B2A2C778295300D9A2325C686129B8F2B5337B3DCF4514E8BBC19D900EE5n,
+        //         y:0x54C9288C82733EFDF7808AE7F27D0E732F7C73A7D9AC98B7D8740A91D0DB3CF4n,
+        //     }
+        // }
+        setRKeyB(smb_lin)
     }
 
     // const [RB, setRB] = useState<any[]>([undefined])
@@ -143,18 +151,44 @@ function App() {
     const generateKeyA = () => {
         setIsShowError(false)
         setIsShowSuccess(false)
-        setSmAKey(sm.genKeyPaire())
+        const sma_zheng=sm.genKeyPaire()
+        // console.log('😎sma_zheng:', sma_zheng);
+        // const sma_zheng = {
+        //    privateKey:0x6FCBA2EF9AE0AB902BC3BDE3FF915D44BA4CC78F88E2F8E7F8996D3B8CCEEDEEn,
+        //    publicKey:{
+        //     x:0x3099093BF3C137D8FCBBCDF4A2AE50F3B0F216C3122D79425FE03A45DBFE1655n,
+        //     y:0x3DF79E8DAC1CF0ECBAA2F2B49D51A4B387F2EFAF482339086A27A8E05BAED98Bn,
+        //    }
+        // }
+        setSmAKey(sma_zheng)
     }
     const generateKeyB = () => {
 
         setIsShowError(false)
         setIsShowSuccess(false)
-        setSmBKey(sm.genKeyPaire())
+        const smb_zheng = sm.genKeyPaire()
+        // const smb_zheng = {
+        //     privateKey: 0x5E35D7D3F3C54DBAC72E61819E730B019A84208CA3A35E4C2E353DFCCB2A3B53n,
+        //     publicKey: {
+        //         x: 0x245493D446C38D8CC0F118374690E7DF633A8A4BFB3329B5ECE604B2B4F37F43n,
+        //         y:0x53C0869F4B9E17773DE68FEC45E14904E0DEA45BF6CECF9918C85EA047C60A4Cn,
+        //     }
+        // }
+        setSmBKey(smb_zheng)
     }
     const generateKeyTmpA = () => {
         setIsShowSuccess(false)
         setIsShowError(false)
-        setRKeyA(sm.agreement_initiate())
+        const sma_lin = sm.agreement_initiate()
+        // console.log("code line-174 \n\r😐 sma_lin:\n\r",sma_lin);
+        // const sma_lin={
+        //     privateKey: 0x83A2C9C8B96E5AF70BD480B472409A9A327257F1EBB73F5B073354B248668563n,
+        //     publicKey: {
+        //         x: 0x6CB5633816F4DD560B1DEC458310CBCC6856C09505324A6D23150C408F162BF0n,
+        //         y:0x0D6FCF62F1036C0A1B6DACCF57399223A65F7D7BF2D9637E5BBBEB857961BF1An,
+        //     }
+        // }
+        setRKeyA(sma_lin)
     }
     const generateAllkey = () => {
         generateKeyA();
